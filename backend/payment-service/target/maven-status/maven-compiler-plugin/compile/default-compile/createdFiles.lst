@@ -1,0 +1,5 @@
+com\projekan\payment_service\controller\PaymentController.class
+com\projekan\payment_service\model\Payment$PaymentBuilder.class
+com\projekan\payment_service\PaymentServiceApplication.class
+com\projekan\payment_service\repository\PaymentRepository.class
+com\projekan\payment_service\model\Payment.class

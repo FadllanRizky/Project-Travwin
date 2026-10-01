@@ -1,0 +1,5 @@
+com\projekan\booking_service\BookingServiceApplication.class
+com\projekan\booking_service\model\Booking$BookingBuilder.class
+com\projekan\booking_service\model\Booking.class
+com\projekan\booking_service\controller\BookingController.class
+com\projekan\booking_service\repository\BookingRepository.class

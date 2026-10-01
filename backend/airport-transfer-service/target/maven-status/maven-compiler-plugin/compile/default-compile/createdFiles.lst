@@ -1,0 +1,5 @@
+com\projekan\airport_transfer_service\repository\AirportTransferRepository.class
+com\projekan\airport_transfer_service\model\AirportTransfer$AirportTransferBuilder.class
+com\projekan\airport_transfer_service\controller\AirportTransferController.class
+com\projekan\airport_transfer_service\model\AirportTransfer.class
+com\projekan\airport_transfer_service\AirportTransferServiceApplication.class

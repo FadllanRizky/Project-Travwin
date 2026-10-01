@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+@theme {
+  --color-travel-50: #f0f6ff;
+  --color-travel-100: #dcecff;
+  --color-travel-200: #bcdcff;
+  --color-travel-300: #8cc4ff;
+  --color-travel-400: #57a3ff;
+  --color-travel-500: #2f7dff;
+  --color-travel-600: #1a5aef;
+  --color-travel-700: #1446dc;
+  --color-travel-800: #173ab1;
+  --color-travel-900: #19358c;
+  --color-travel-950: #142255;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: #0b1b3f;
+  color: #0f172a;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #2f7dff;
+  color: #fff;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.text-shadow {
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+}

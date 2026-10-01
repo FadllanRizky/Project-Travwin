@@ -1,0 +1,5 @@
+com\projekan\rental_service\repository\VehicleRentalRepository.class
+com\projekan\rental_service\model\VehicleRental$VehicleRentalBuilder.class
+com\projekan\rental_service\controller\RentalController.class
+com\projekan\rental_service\model\VehicleRental.class
+com\projekan\rental_service\RentalServiceApplication.class

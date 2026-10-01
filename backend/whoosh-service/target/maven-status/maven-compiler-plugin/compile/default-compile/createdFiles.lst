@@ -1,0 +1,5 @@
+com\projekan\whoosh_service\WhooshServiceApplication.class
+com\projekan\whoosh_service\model\WhooshSchedule.class
+com\projekan\whoosh_service\model\WhooshSchedule$WhooshScheduleBuilder.class
+com\projekan\whoosh_service\controller\WhooshController.class
+com\projekan\whoosh_service\repository\WhooshScheduleRepository.class

@@ -1,0 +1,5 @@
+com\projekan\travel_service\controller\TravelController.class
+com\projekan\travel_service\TravelServiceApplication.class
+com\projekan\travel_service\model\TravelSchedule$TravelScheduleBuilder.class
+com\projekan\travel_service\model\TravelSchedule.class
+com\projekan\travel_service\repository\TravelScheduleRepository.class

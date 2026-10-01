@@ -1,0 +1,117 @@
+name: travelku
+
+# Common DB connection variables for every Spring Boot microservice.
+# Host PostgreSQL (Windows service) is reached via host.docker.internal.
+x-db-env: &db-env
+  SPRING_DATASOURCE_USERNAME: ${DB_USER:-mburmin}
+  SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD:-mburmin123}
+  SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+  SPRING_DATASOURCE_HIKARI_MAXIMUM_POOL_SIZE: 3
+  SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+services:
+  api-gateway:
+    build: ./api-gateway
+    container_name: travelku-api-gateway
+    environment:
+      GATEWAY_HOSTS: auth=auth-service,users=user-service,hotels=hotel-service,flights=pesawat-service,trains=kereta-service,whoosh=whoosh-service,travel=travel-service,rentals=rental-service,airport-transfers=airport-transfer-service,bookings=booking-service,payments=payment-service
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  auth-service:
+    build: ./auth-service
+    container_name: travelku-auth-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_auth_service
+    restart: unless-stopped
+
+  user-service:
+    build: ./user-service
+    container_name: travelku-user-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_user_service
+    restart: unless-stopped
+
+  hotel-service:
+    build: ./hotel-service
+    container_name: travelku-hotel-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_hotel_service
+    restart: unless-stopped
+
+  pesawat-service:
+    build: ./pesawat-service
+    container_name: travelku-pesawat-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_pesawat_service
+    restart: unless-stopped
+
+  kereta-service:
+    build: ./kereta-service
+    container_name: travelku-kereta-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_kereta_service
+    restart: unless-stopped
+
+  whoosh-service:
+    build: ./whoosh-service
+    container_name: travelku-whoosh-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_whoosh_service
+    restart: unless-stopped
+
+  travel-service:
+    build: ./travel-service
+    container_name: travelku-travel-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_travel_service
+    restart: unless-stopped
+
+  rental-service:
+    build: ./rental-service
+    container_name: travelku-rental-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_rental_service
+    restart: unless-stopped
+
+  airport-transfer-service:
+    build: ./airport-transfer-service
+    container_name: travelku-airport-transfer-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_airport_transfer_service
+    restart: unless-stopped
+
+  booking-service:
+    build: ./booking-service
+    container_name: travelku-booking-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_booking_service
+    restart: unless-stopped
+
+  payment-service:
+    build: ./payment-service
+    container_name: travelku-payment-service
+    environment:
+      <<: *db-env
+      SPRING_DATASOURCE_URL: jdbc:postgresql://${DB_HOST:-host.docker.internal}:${DB_PORT:-5432}/mcr_payment_service
+    restart: unless-stopped
+
+  frontend:
+    build: ../frontend
+    container_name: travelku-frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - api-gateway
+    restart: unless-stopped
